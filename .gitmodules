@@ -1,0 +1,4 @@
+[submodule "UMLSBert_ENG"]
+	path = UMLSBert_ENG
+	url = https://huggingface.co/balzanilo/UMLSBert_ENG
+	branch = main

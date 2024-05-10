@@ -1,0 +1,5 @@
+data/medqa/train.statement.jsonl filter=lfs diff=lfs merge=lfs -text
+data/medqa/train.grounded.json filter=lfs diff=lfs merge=lfs -text
+data/medqa/concept_names.tsv filter=lfs diff=lfs merge=lfs -text
+data/umls/UMLS_KG_triplets_sample.txt filter=lfs diff=lfs merge=lfs -text
+data/umls/*.pt filter=lfs diff=lfs merge=lfs -text
