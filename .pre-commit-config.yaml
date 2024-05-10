@@ -1,0 +1,65 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-docstring-first
+      - id: check-toml
+      - id: check-yaml
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: end-of-file-fixer
+  - repo: https://gitlab.com/bmares/check-json5
+    rev: v1.0.0
+    hooks:
+      - id: check-json5
+        exclude: data/.*
+  - repo: https://github.com/hhatto/autopep8
+    rev: v2.1.0
+    hooks:
+      - id: autopep8
+        args: [--in-place, --aggressive, --exit-code]
+        types: [python]
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+            "--max-line-length=120",
+            "--errors-only",
+          ]
+      - id: pylint
+        alias: pylint-all
+        name: pylint-all
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+            "--max-line-length=120",
+          ]
+        stages: [manual]
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [--config=setup.cfg]
+        additional_dependencies:
+          - flake8-bugbear==22.10.27
+          - flake8-comprehensions==3.10.1
+          - torchfix==0.0.2
+  - repo: https://github.com/facebook/usort
+    rev: v1.0.7
+    hooks:
+      - id: usort
+        name: Sort imports with µsort
+        description: Safe, minimal import sorting
+        language: python
+        types_or:
+          - python
+          - pyi
+        entry: usort format
+        require_serial: true
